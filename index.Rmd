@@ -27,7 +27,8 @@ library('elastic')
 ## Connect
 
 ```{r, eval=FALSE}
-connect()
+load("es.RData")
+connect(es_base = base, es_port = port)
 ```
 
 ---
