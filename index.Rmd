@@ -18,15 +18,14 @@ knit        : slidify::knit2slides
 install.packages("devtools")
 ## Or install development version:
 devtools::install_github("ropensci/elastic")
-
-library('elastic')
 ```
 
 ---
 
 ## Connect
 
-```{r, eval=FALSE}
+```{r}
+library('elastic')
 load("es.RData")
 connect(es_base = base, es_port = port)
 ```
@@ -37,7 +36,7 @@ connect(es_base = base, es_port = port)
 
 - Sample data provided by elastic package, use bulk api to put json file into elasticsearch
 
-```{r, eval=FALSE}
+```{r}
 shakespeare <- system.file("examples", "shakespeare_data.json", package = "elastic")
 docs_bulk(shakespeare)
 ```
@@ -46,7 +45,7 @@ docs_bulk(shakespeare)
 
 ## Search
 
-```{r, eval=FALSE}
+```{r}
 out <- Search(index="shakespeare")
 out$hits$total
 ```
