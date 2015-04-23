@@ -1,6 +1,6 @@
 ---
 title       : Elastic R API
-subtitle    : 2015-04-24
+subtitle    : Data Science Team Weekly Sync 2015-04-24
 author      : Summit Suen
 job         : Etu
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
