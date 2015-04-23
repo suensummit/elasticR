@@ -36,7 +36,7 @@ connect()
 
 ## Get Data
 
-### Sample data provided by elastic package, use bulk api to put json file into elasticsearch
+- Sample data provided by elastic package, use bulk api to put json file into elasticsearch
 
 
 ```r
