@@ -66,21 +66,55 @@ library(&#39;elastic&#39;)
     <pre><code class="r">connect()
 </code></pre>
 
-<pre><code>## Error: 
-##   Failed to connect to http://127.0.0.1:9200
-##   Remember to start Elasticsearch before connecting
-</code></pre>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
+    <h2>Get Data</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Sample data provided by elastic package, use bulk api to put json file into elasticsearch</h3>
+
+<pre><code class="r">shakespeare &lt;- system.file(&quot;examples&quot;, &quot;shakespeare_data.json&quot;, package = &quot;elastic&quot;)
+docs_bulk(shakespeare)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
     <h2>Search</h2>
   </hgroup>
   <article data-timings="">
-    
+    <pre><code class="r">out &lt;- Search(index=&quot;shakespeare&quot;)
+out$hits$total
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Modeling</h2>
+  </hgroup>
+  <article data-timings="">
+    <pre><code class="r">library(tm)
+</code></pre>
+
+<pre><code>## Loading required package: NLP
+## 
+## Attaching package: &#39;NLP&#39;
+## 
+## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     annotate
+</code></pre>
+
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -103,8 +137,20 @@ library(&#39;elastic&#39;)
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Search'>
+        data-slide=3 title='Get Data'>
          3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Search'>
+         4
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=5 title='Modeling'>
+         5
       </a>
     </li>
   </ul>

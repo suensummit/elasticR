@@ -32,12 +32,43 @@ library('elastic')
 connect()
 ```
 
-```
-## Error: 
-##   Failed to connect to http://127.0.0.1:9200
-##   Remember to start Elasticsearch before connecting
+---
+
+## Get Data
+
+### Sample data provided by elastic package, use bulk api to put json file into elasticsearch
+
+
+```r
+shakespeare <- system.file("examples", "shakespeare_data.json", package = "elastic")
+docs_bulk(shakespeare)
 ```
 
 ---
 
 ## Search
+
+
+```r
+out <- Search(index="shakespeare")
+out$hits$total
+```
+
+---
+
+## Modeling
+
+
+```r
+library(tm)
+```
+
+```
+## Loading required package: NLP
+## 
+## Attaching package: 'NLP'
+## 
+## The following object is masked from 'package:ggplot2':
+## 
+##     annotate
+```
