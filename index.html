@@ -95122,7 +95122,14 @@ out$hits$total
     <h2>Query</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">Search(index=&quot;shakespeare&quot;, type=&quot;act&quot;, q=&quot;speaker:KING HENRY IV&quot;)$hits$total
+    <pre><code class="r">out &lt;- Search(index=&quot;shakespeare&quot;, type=&quot;act&quot;, q=&quot;speaker:KING HENRY IV&quot;)
+out$hits[[1]]
+</code></pre>
+
+<pre><code>## [1] 9
+</code></pre>
+
+<pre><code class="r">out$hits$total
 </code></pre>
 
 <pre><code>## [1] 9
@@ -95143,42 +95150,10 @@ out$hits$total
 
 <pre><code class="r">aggs &lt;- &#39;{&quot;aggs&quot;:{&quot;stats&quot;:{&quot;terms&quot;:{&quot;field&quot;:&quot;text_entry&quot;}}}}&#39;
 out &lt;- Search(index=&quot;shakespeare&quot;, body=aggs)
-out$hits$hits[[1]]
+out$hits$hits[[1]]$`_source`$text_entry
 </code></pre>
 
-<pre><code>## $`_index`
-## [1] &quot;shakespeare&quot;
-## 
-## $`_type`
-## [1] &quot;line&quot;
-## 
-## $`_id`
-## [1] &quot;4&quot;
-## 
-## $`_version`
-## [1] 2
-## 
-## $`_score`
-## [1] 1
-## 
-## $`_source`
-## $`_source`$line_id
-## [1] 5
-## 
-## $`_source`$play_name
-## [1] &quot;Henry IV&quot;
-## 
-## $`_source`$speech_number
-## [1] 1
-## 
-## $`_source`$line_number
-## [1] &quot;1.1.2&quot;
-## 
-## $`_source`$speaker
-## [1] &quot;KING HENRY IV&quot;
-## 
-## $`_source`$text_entry
-## [1] &quot;Find we a time for frighted peace to pant,&quot;
+<pre><code>## [1] &quot;Find we a time for frighted peace to pant,&quot;
 </code></pre>
 
   </article>

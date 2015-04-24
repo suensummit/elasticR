@@ -55,7 +55,9 @@ out$hits$total
 ## Query
 
 ```{r}
-Search(index="shakespeare", type="act", q="speaker:KING HENRY IV")$hits$total
+out <- Search(index="shakespeare", type="act", q="speaker:KING HENRY IV")
+out$hits[[1]]
+out$hits$total
 ```
 
 ---
@@ -67,6 +69,6 @@ Search(index="shakespeare", type="act", q="speaker:KING HENRY IV")$hits$total
 ```{r}
 aggs <- '{"aggs":{"stats":{"terms":{"field":"text_entry"}}}}'
 out <- Search(index="shakespeare", body=aggs)
-out$hits$hits[[1]]
+out$hits$hits[[1]]$`_source`$text_entry
 ```
 

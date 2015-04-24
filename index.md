@@ -95079,7 +95079,16 @@ out$hits$total
 
 
 ```r
-Search(index="shakespeare", type="act", q="speaker:KING HENRY IV")$hits$total
+out <- Search(index="shakespeare", type="act", q="speaker:KING HENRY IV")
+out$hits[[1]]
+```
+
+```
+## [1] 9
+```
+
+```r
+out$hits$total
 ```
 
 ```
@@ -95096,42 +95105,10 @@ Search(index="shakespeare", type="act", q="speaker:KING HENRY IV")$hits$total
 ```r
 aggs <- '{"aggs":{"stats":{"terms":{"field":"text_entry"}}}}'
 out <- Search(index="shakespeare", body=aggs)
-out$hits$hits[[1]]
+out$hits$hits[[1]]$`_source`$text_entry
 ```
 
 ```
-## $`_index`
-## [1] "shakespeare"
-## 
-## $`_type`
-## [1] "line"
-## 
-## $`_id`
-## [1] "4"
-## 
-## $`_version`
-## [1] 2
-## 
-## $`_score`
-## [1] 1
-## 
-## $`_source`
-## $`_source`$line_id
-## [1] 5
-## 
-## $`_source`$play_name
-## [1] "Henry IV"
-## 
-## $`_source`$speech_number
-## [1] 1
-## 
-## $`_source`$line_number
-## [1] "1.1.2"
-## 
-## $`_source`$speaker
-## [1] "KING HENRY IV"
-## 
-## $`_source`$text_entry
 ## [1] "Find we a time for frighted peace to pant,"
 ```
 
