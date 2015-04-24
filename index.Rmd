@@ -36,7 +36,7 @@ connect(es_base = base, es_port = port)
 
 - Sample data provided by elastic package, use bulk api to put json file into elasticsearch
 
-```{r}
+```{r, echo=FALSE}
 shakespeare <- system.file("examples", "shakespeare_data.json", package = "elastic")
 docs_bulk(shakespeare)
 ```
@@ -52,8 +52,21 @@ out$hits$total
 
 ---
 
-## Modeling
+## Query
 
 ```{r}
-library(tm)
+Search(index="shakespeare", type="act", q="speaker:KING HENRY IV")$hits$total
 ```
+
+---
+
+## Query
+
+- Query DSL searches - queries sent in the body of the request
+
+```{r}
+aggs <- '{"aggs":{"stats":{"terms":{"field":"text_entry"}}}}'
+out <- Search(index="shakespeare", body=aggs)
+out$hits$hits[[1]]
+```
+
