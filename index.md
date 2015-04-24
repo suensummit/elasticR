@@ -103,6 +103,14 @@ out$hits$total
 ```r
 aggs <- '{"aggs":{"stats":{"terms":{"field":"text_entry"}}}}'
 out <- Search(index="shakespeare", body=aggs)
+out$hits$hits[[1]]$`_source`$speaker
+```
+
+```
+## [1] "KING HENRY IV"
+```
+
+```r
 out$hits$hits[[1]]$`_source`$text_entry
 ```
 

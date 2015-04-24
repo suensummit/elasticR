@@ -148,7 +148,13 @@ out$hits[[1]]
 
 <pre><code class="r">aggs &lt;- &#39;{&quot;aggs&quot;:{&quot;stats&quot;:{&quot;terms&quot;:{&quot;field&quot;:&quot;text_entry&quot;}}}}&#39;
 out &lt;- Search(index=&quot;shakespeare&quot;, body=aggs)
-out$hits$hits[[1]]$`_source`$text_entry
+out$hits$hits[[1]]$`_source`$speaker
+</code></pre>
+
+<pre><code>## [1] &quot;KING HENRY IV&quot;
+</code></pre>
+
+<pre><code class="r">out$hits$hits[[1]]$`_source`$text_entry
 </code></pre>
 
 <pre><code>## [1] &quot;Find we a time for frighted peace to pant,&quot;
