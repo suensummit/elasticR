@@ -1,6 +1,6 @@
 ---
 title       : Elastic R API
-subtitle    : Data Science Team Weekly Sync 2015-04-24
+subtitle    : Data Science Team Weekly Sync
 author      : Summit Suen
 job         : Etu
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
@@ -28,6 +28,7 @@ devtools::install_github("ropensci/elastic")
 library('elastic')
 load("es.RData")
 connect(es_base = base, es_port = port)
+# default base = "http://127.0.0.1" and default port = 9200
 ```
 
 ---
@@ -36,9 +37,13 @@ connect(es_base = base, es_port = port)
 
 - Sample data provided by elastic package, use bulk api to put json file into elasticsearch
 
-```{r, eval=FALSE}
+```{r}
 shakespeare <- system.file("examples", "shakespeare_data.json", package = "elastic")
+aliases_get()
+index_delete(index = "shakespeare")
+aliases_get()
 docs_bulk(shakespeare)
+aliases_get()
 ```
 
 ---
