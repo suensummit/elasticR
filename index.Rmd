@@ -36,7 +36,7 @@ connect(es_base = base, es_port = port)
 
 - Sample data provided by elastic package, use bulk api to put json file into elasticsearch
 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 shakespeare <- system.file("examples", "shakespeare_data.json", package = "elastic")
 docs_bulk(shakespeare)
 ```
