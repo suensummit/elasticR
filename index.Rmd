@@ -25,11 +25,12 @@ devtools::install_github("ropensci/elastic")
 ## Connect
 
 ```{r}
-library('elastic')
+require('elastic')
 # load("es.RData")
 # connect(es_base = base, es_port = port)
-connect()
+
 # default base = "http://127.0.0.1" and default port = 9200
+connect()
 ```
 
 ---
@@ -43,7 +44,18 @@ shakespeare <- system.file("examples", "shakespeare_data.json", package = "elast
 aliases_get()
 index_delete(index = "shakespeare")
 aliases_get()
+```
+
+---
+
+## Get Data
+
+- Sample data provided by elastic package, use bulk api to put json file into elasticsearch
+
+```{r, echo=FALSE}
 docs_bulk(shakespeare)
+```
+```{r}
 aliases_get()
 ```
 
