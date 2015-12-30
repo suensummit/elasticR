@@ -1,8 +1,8 @@
 ---
 title       : Elastic R API
-subtitle    : Data Science Team Weekly Sync
+subtitle    : lightening demo
 author      : Summit Suen
-job         : Etu
+job         : Taiwan R User Group
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -26,8 +26,9 @@ devtools::install_github("ropensci/elastic")
 
 ```{r}
 library('elastic')
-load("es.RData")
-connect(es_base = base, es_port = port)
+# load("es.RData")
+# connect(es_base = base, es_port = port)
+connect()
 # default base = "http://127.0.0.1" and default port = 9200
 ```
 
