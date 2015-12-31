@@ -129,7 +129,7 @@ res$items[[length(res$items)]]
 ## [1] "4999"
 ## 
 ## $index$`_version`
-## [1] 5
+## [1] 9
 ## 
 ## $index$`_shards`
 ## $index$`_shards`$total
