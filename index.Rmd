@@ -1,8 +1,8 @@
 ---
-title       : Elastic R API
-subtitle    : lightening demo
+title       : Elastic R API Demo
+subtitle    : Elasticsearch Workshop
 author      : Summit Suen
-job         : Taiwan R User Group
+job         : 木刻思股份有限公司
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -28,9 +28,8 @@ devtools::install_github("ropensci/elastic")
 require('elastic')
 # load("es.RData")
 # connect(es_base = base, es_port = port)
-
-# default base = "http://127.0.0.1" and default port = 9200
 connect()
+# default base = "http://127.0.0.1" and default port = 9200
 ```
 
 ---
@@ -42,6 +41,15 @@ connect()
 ```{r}
 shakespeare <- system.file("examples", "shakespeare_data.json", package = "elastic")
 aliases_get()
+```
+
+---
+
+## Get Data
+
+- Sample data provided by elastic package, use bulk api to put json file into elasticsearch
+
+```{r}
 index_delete(index = "shakespeare")
 aliases_get()
 ```
@@ -52,9 +60,17 @@ aliases_get()
 
 - Sample data provided by elastic package, use bulk api to put json file into elasticsearch
 
-```{r, echo=FALSE}
-docs_bulk(shakespeare)
+```{r}
+res <- docs_bulk(shakespeare)
+res$items[[length(res$items)]]
 ```
+
+---
+
+## Get Data
+
+- Sample data provided by elastic package, use bulk api to put json file into elasticsearch
+
 ```{r}
 aliases_get()
 ```
@@ -87,7 +103,7 @@ out$hits$total
 ```{r}
 aggs <- '{"aggs":{"stats":{"terms":{"field":"text_entry"}}}}'
 out <- Search(index="shakespeare", body=aggs)
-out$hits$hits[[1]]$`_source`$speaker
-out$hits$hits[[1]]$`_source`$text_entry
+out$hits$hits[[2]]$`_source`$speaker
+out$hits$hits[[2]]$`_source`$text_entry
 ```
 
