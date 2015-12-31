@@ -16,8 +16,9 @@ knit        : slidify::knit2slides
 
 ```r
 ## Install from CRAN
+install.packages("elastic")
+## Or install latest development version:
 install.packages("devtools")
-## Or install development version:
 devtools::install_github("ropensci/elastic")
 ```
 
